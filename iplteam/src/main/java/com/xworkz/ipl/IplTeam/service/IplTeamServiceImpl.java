@@ -1,5 +1,7 @@
 package com.xworkz.ipl.IplTeam.service;
 
+import java.util.List;
+
 import com.xworkz.ipl.IplTeam.dao.IplTeamDAO;
 import com.xworkz.ipl.IplTeam.dao.IplTeamDAOImpl;
 import com.xworkz.ipl.IplTeam.dto.IplTeamDTO;
@@ -56,5 +58,59 @@ private IplTeamDAO iplDAO;
 			iplDAO.updateDetails(name,id,players);
 		}
 		
+	}
+
+
+
+	@Override
+	public List<IplTeamDTO> validateAndGetAllDetails() {
+		// TODO Auto-generated method stub
+		return iplDAO.getAllDetails();
+
+	}
+
+
+
+	@Override
+	public String validateAndGetIplTeamLocationByIplTeamName(String name) {
+		// TODO Auto-generated method stub
+		if(name!=null) {
+			return iplDAO.getIplTeamLocationByIplTeamName(name);
+		}
+		else {
+			System.out.println("name cant be empty");
+		}
+		
+		return null;
+	}
+
+
+
+	@Override
+	public IplTeamDTO validateAndGetDetailsByIplTeamName(String name) {
+		// TODO Auto-generated method stub
+		if(name!=null) {
+			return iplDAO.getDetailsByIplTeamName(name);
+		}
+		else {
+			System.out.println("name cant be empty");
+		}
+
+		return null;
+	}
+
+
+
+	@Override
+	public Object[] validateAndGetIplTeamLocationAndNoOfPlayersByIplTeamName(String name) {
+		// TODO Auto-generated method stub
+		if(name!=null) {
+			return iplDAO.getIplTeamLocationAndNoOfPlayersByIplTeamName(name);
+		}
+		else {
+			System.out.println("name cant be empty");
+		}
+
+		return null;
 	}
 }

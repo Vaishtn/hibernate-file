@@ -20,6 +20,19 @@ public interface BluetoothSpeakerDAO {
 	String getBluetoothNameByBrand(String brand);
 
 	Object[] getBluetoothRangeAndbluetoothNameByBrand(String brand);
+	List<Object[]> getbluetoothRangeAndbluetoothNameBybluetoothCompanyName(String brand);
+
+	int updateNameByBrandH(String brand, String name);
+
+	int updateRangeByNameH(String brand, String range);
+
+	int deleteByBrandH(String brand);
+
+	int deleteByRangeH(String range);
+
+
+	int deleteByBluetoothNameH(String bluetoothName);
+
 
 
 

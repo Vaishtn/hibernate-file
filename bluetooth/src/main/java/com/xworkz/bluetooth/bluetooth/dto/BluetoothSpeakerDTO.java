@@ -28,6 +28,7 @@ public class BluetoothSpeakerDTO implements Serializable{
 	
 	
 	
+	
 	@Override
 	public String toString() {
 		return "BluetoothSpeakerDTO [bluetoothId=" + bluetoothId + ", brand=" + brand + ", bluetoothName="

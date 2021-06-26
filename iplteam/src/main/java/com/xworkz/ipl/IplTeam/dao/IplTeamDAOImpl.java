@@ -1,5 +1,7 @@
 package com.xworkz.ipl.IplTeam.dao;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -128,4 +130,87 @@ public class IplTeamDAOImpl implements IplTeamDAO{
 	}
 
 	}
-}
+
+	@Override
+	public List<IplTeamDTO> getAllDetails() {
+		// TODO Auto-generated method stub
+		try {
+				
+			 return HibernateUtil.getSessionFactory().openSession().createQuery("from IplTeamDTO iDTO").list();
+			}
+		 catch (Exception e) {
+				e.printStackTrace();
+			}
+			finally{
+				if(session!=null) {
+					session.close();
+				}
+				if(HibernateUtil.getSessionFactory()!=null) {
+					HibernateUtil.getSessionFactory().close();
+				}
+			}
+			return null;
+
+	
+	}
+
+	@Override
+	public String getIplTeamLocationByIplTeamName(String name) {
+		// TODO Auto-generated method stub
+		String hql ="select dto.location from IplTeamDTO dto where dto.teamName ='"+name +"' ";
+		try {
+			
+			 return (String) HibernateUtil.getSessionFactory().openSession().createQuery(hql).uniqueResult();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			finally{
+				if(session!=null) {
+					session.close();
+				}
+				
+			}
+		return null;
+	}
+
+	@Override
+	public IplTeamDTO getDetailsByIplTeamName(String name) {
+		// TODO Auto-generated method stub
+		String hql ="select dto from IplTeamDTO dto where dto.teamName ='"+name +"' ";
+		try {
+			
+			 return (IplTeamDTO) HibernateUtil.getSessionFactory().openSession().createQuery(hql).uniqueResult();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			finally{
+				if(session!=null) {
+					session.close();
+				}
+				
+			}
+		return null;
+	}
+
+	@Override
+	public Object[] getIplTeamLocationAndNoOfPlayersByIplTeamName(String name) {
+		// TODO Auto-generated method stub
+		String hql ="select dto.location,dto.noOfPlayers from IplTeamDTO dto where dto.teamName ='"+name +"' ";
+		try {
+			
+			 return (Object[]) HibernateUtil.getSessionFactory().openSession().createQuery(hql).uniqueResult();
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			finally{
+				if(session!=null) {
+					session.close();
+				}
+				if(HibernateUtil.getSessionFactory()!=null) {
+					HibernateUtil.getSessionFactory().close();
+				}
+				
+			}
+		return null;
+	}
+	}

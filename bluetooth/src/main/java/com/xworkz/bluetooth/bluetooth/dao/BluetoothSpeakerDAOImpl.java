@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import com.xworkz.bluetooth.bluetooth.dto.BluetoothSpeakerDTO;
 import com.xworkz.singleton.HibernateUtil;
@@ -168,6 +169,194 @@ public void save(BluetoothSpeakerDTO bluetoothSpeakerDTO) {
 			
 		}
 		return null;
+	}
+
+	@Override
+	public List<Object[]> getbluetoothRangeAndbluetoothNameBybluetoothCompanyName(String brand) {
+		// TODO Auto-generated method stub
+		String hql = "select dto.range,dto.bluetoothName from BluetoothSpeakerDTO dto where dto.brand = '"+brand+"'";
+		return HibernateUtil.getSessionFactory().openSession().createQuery(hql).list();
+
+	}
+
+	@Override
+	public int updateNameByBrandH(String brand, String name) {
+		// TODO Auto-generated method stub
+		Session session =null;
+		String hql = "update BluetoothSpeakerDTO dto set dto.bluetoothName = '"+name+"' where dto.brand='"+brand+"'";
+
+		Transaction transaction = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			Query query = session.createQuery(hql);
+			transaction = session.beginTransaction();
+			int rw = query.executeUpdate();
+			
+			transaction.commit();
+			
+			return rw;
+			
+			
+		}catch (HibernateException e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
+		finally {
+			
+			if(session!=null) {
+				session.close();
+			}
+			if(HibernateUtil.getSessionFactory()!=null) {
+				HibernateUtil.getSessionFactory().close();
+			}
+		
+			
+		}
+		return 0;
+	}
+
+	@Override
+	public int updateRangeByNameH(String brand, String range) {
+		// TODO Auto-generated method stub
+		Session session =null;
+		String hql = "update BluetoothSpeakerDTO dto set dto.brand = '"+brand+"' where dto.range='"+range+"'";
+
+		Transaction transaction = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			Query query = session.createQuery(hql);
+			transaction = session.beginTransaction();
+			int rw = query.executeUpdate();
+			
+			transaction.commit();
+			
+			return rw;
+			
+			
+		}catch (HibernateException e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
+		finally {
+			
+			if(session!=null) {
+				session.close();
+			}
+			if(HibernateUtil.getSessionFactory()!=null) {
+				HibernateUtil.getSessionFactory().close();
+			}
+		
+			
+		}
+		return 0;
+	}
+
+	@Override
+	public int deleteByBrandH(String brand) {
+		// TODO Auto-generated method stub
+		Session session =null;
+		String hql = "delete from BluetoothSpeakerDTO dto where dto.brand='"+brand+"'";
+
+		Transaction transaction = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			Query query = session.createQuery(hql);
+			transaction = session.beginTransaction();
+			int rw = query.executeUpdate();
+			
+			transaction.commit();
+			
+			return rw;
+			
+			
+		}catch (HibernateException e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
+		finally {
+			
+			if(session!=null) {
+				session.close();
+			}
+			if(HibernateUtil.getSessionFactory()!=null) {
+				HibernateUtil.getSessionFactory().close();
+			}
+		
+			
+		}
+		return 0;
+	}
+
+	@Override
+	public int deleteByRangeH(String range) {
+		// TODO Auto-generated method stub
+		Session session =null;
+		String hql = "delete from BluetoothSpeakerDTO dto where dto.range='"+range+"'";
+
+		Transaction transaction = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			Query query = session.createQuery(hql);
+			transaction = session.beginTransaction();
+			int rw = query.executeUpdate();
+			
+			transaction.commit();
+			
+			return rw;
+			
+			
+		}catch (HibernateException e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
+		finally {
+			
+			if(session!=null) {
+				session.close();
+			}
+			if(HibernateUtil.getSessionFactory()!=null) {
+				HibernateUtil.getSessionFactory().close();
+			}
+		
+			
+		}
+		return 0;
+	}
+
+	@Override
+	public int deleteByBluetoothNameH(String bluetoothName) {
+		// TODO Auto-generated method stub
+		Session session =null;
+		String hql = "delete from BluetoothSpeakerDTO dto where dto.bluetoothName='"+bluetoothName+"'";
+
+		Transaction transaction = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			Query query = session.createQuery(hql);
+			transaction = session.beginTransaction();
+			int rw = query.executeUpdate();
+			
+			transaction.commit();
+			
+			return rw;
+			
+			
+		}catch (HibernateException e) {
+			e.printStackTrace();
+			transaction.rollback();
+		}
+		finally {
+			
+			if(session!=null) {
+				session.close();
+			}
+			if(HibernateUtil.getSessionFactory()!=null) {
+				HibernateUtil.getSessionFactory().close();
+			}
+		
+			
+		}
+		return 0;
 	}
 	
 

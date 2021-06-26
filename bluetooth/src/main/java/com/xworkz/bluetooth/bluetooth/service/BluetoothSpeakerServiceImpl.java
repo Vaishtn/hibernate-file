@@ -105,5 +105,82 @@ private BluetoothSpeakerDAO bluetoothSpeakerDAO ;
 		}
 		return null;
 	}
+	@Override
+	public List<Object[]> validateAndGetbluetoothRangeAndbluetoothNameBybluetoothCompanyName(String brand) {
+		if(brand!=null) {
+			
+			return bluetoothSpeakerDAO.getbluetoothRangeAndbluetoothNameBybluetoothCompanyName(brand);
+		}
+		else {
+			System.out.println("Brand cant be empty");
+		}
+		return null;
+	}
+
+
+	@Override
+	public int validateAndUpdateNameByBrandH(String brand, String name) {
+		if(brand!=null) {
+			
+			return bluetoothSpeakerDAO.updateNameByBrandH(brand,name);
+		}
+		else {
+			System.out.println("Brand cant be empty");
+		}
+		return 0;
+	}
+
+
+	@Override
+	public int validateAndUpdateRangeByNameH(String brand, String range) {
+		if(brand!=null) {
+			
+			return bluetoothSpeakerDAO.updateRangeByNameH(brand,range);
+		}
+		else {
+			System.out.println("Brand cant be empty");
+		}
+		return 0;
+	}
+
+
+	@Override
+	public int validateAndDeleteByBrandH(String brand) {
+		if(brand!=null) {
+			
+			return bluetoothSpeakerDAO.deleteByBrandH(brand);
+		}
+		else {
+			System.out.println("Brand cant be empty");
+		}
+		return 0;
+	}
+
+
+	@Override
+	public int validateAndDeleteByRangeH(String range) {
+		if(range!=null) {
+			
+			return bluetoothSpeakerDAO.deleteByRangeH(range);
+		}
+		else {
+			System.out.println("Range cant be empty");
+		}
+		return 0;
+	}
+
+
+	@Override
+	public int validateAndDeleteByBluetoothNameH(String bluetoothName) {
+if(bluetoothName!=null) {
+			
+			return bluetoothSpeakerDAO.deleteByBluetoothNameH(bluetoothName);
+		}
+		else {
+			System.out.println("bluetooth name cant be empty");
+		}
+		return 0;
+	}
+
 
 }
